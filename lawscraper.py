@@ -24,11 +24,9 @@ driver_service = Service('./chromedriver.exe')
 
 driver = webdriver.Chrome(service=driver_service, options=chrome_options)
 
-# for index, row in df.iterrows():
-for index, row in df.iloc[281:288].iterrows():
+# for index, row in df.iloc[281:288].iterrows():
+for index, row in df.iterrows():
     
-    # law_link = row['G']
-    # law_name = row['B'].replace('.pdf', '')
     law_link = row['링크']
     law_name = row['파일명'].replace('.pdf', '')
 
@@ -53,11 +51,9 @@ for index, row in df.iloc[281:288].iterrows():
         span_text = driver.find_element(By.CSS_SELECTOR, "#conTop > h2 > span").text
         span_text = span_text[span_text.find(":")+2:span_text.find(")")-1]
 
-        # df.at[index, 'C'] = span_text
         df.at[index, '소방법령(약칭)'] = span_text
     except:
         # If no span tag is found, copy the value from column D
-        # df.at[index, 'C'] = row['D']
         df.at[index, '소방법령(약칭)'] = row['소방법령']
 
     # Create a directory with the name from column C if it doesn't exist
@@ -70,7 +66,7 @@ for index, row in df.iloc[281:288].iterrows():
     workbook = Workbook()
     main_sheet = workbook.active
     main_sheet.title = "Main"
-    main_sheet['A1'] = law_link
+    main_sheet['B2'] = law_link
 
     has_span_a_element = False
 
@@ -92,7 +88,8 @@ for index, row in df.iloc[281:288].iterrows():
             print("Failed to switch to iframe. Check if the iframe ID or locator is correct.")
 
         # Retrieve information from #conScroll > ul
-        ul_element = WebDriverWait(driver, 1).until(
+        # ul_element = driver.find_element(By.CSS_SELECTOR, "#conScroll > ul")
+        ul_element = WebDriverWait(driver, 0.5).until(
             EC.presence_of_element_located((By.CSS_SELECTOR, "#conScroll > ul"))
         )
         li_elements = ul_element.find_elements(By.TAG_NAME, "li")
@@ -110,8 +107,8 @@ for index, row in df.iloc[281:288].iterrows():
                 continue
 
     except TimeoutException:
-        print("Timed out waiting for the ul element to load.")
-        # pass
+        # print("Timed out waiting for the ul element to load.")
+        pass
 
     # Save the workbook
     workbook.save(excel_file_path)
