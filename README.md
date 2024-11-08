@@ -36,3 +36,9 @@ Readme
  	~~5.3. 한글파일 다운받아서 폴더에 넣어주기 -->모든 별표 한글파일 다합하면 480 MB... 여서 하면 안될듯합니다... https://stackoverflow.com/questions/25251583/downloading-file-to-specified-location-with-selenium-and-python~~
 
 6. 첫번째 시트의 첫셀에 G행에 있는 법령 링크 붙여넣기
+
+## '소방법령.zip' 조직도
+
+![2](./public/4.png)
+
+![2](./public/5.png)
