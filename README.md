@@ -31,6 +31,8 @@ Readme
 	
    		5.1.2. text content 에 '별표'가 아닌경우 (별지 또는 다른경우) 시트 생성 하지말고 넘어가기
 
+	![2](./public/6.png)
+
    	5.2. '별표'가 하나도 없는 법령같은경우 파일명 앞에 '[별표없음]법령파일.xlsx' 와같이 표시함
 	
  	~~5.3. 한글파일 다운받아서 폴더에 넣어주기 -->모든 별표 한글파일 다합하면 480 MB... 여서 하면 안될듯합니다... https://stackoverflow.com/questions/25251583/downloading-file-to-specified-location-with-selenium-and-python~~
